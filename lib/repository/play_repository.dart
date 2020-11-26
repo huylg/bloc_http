@@ -4,8 +4,8 @@ import 'package:bloc_pattern_network_fetch/model/api_model.dart';
 class PlayerRepository {
   PlayerApiProvider provider = PlayerApiProvider();
 
-  Future<List<Players>> fetchPlayersByCountry(String countryId) =>
+  Future<List<Player>> fetchPlayersByCountry(String countryId) =>
       provider.fetchPlayersByCountry(countryId);
-  Future<List<Players>> fetchPlayersByName(String countryId) =>
-      provider.fetchPlayersByName(countryId);
+  Future<List<Player>> fetchPlayersByName(String search) =>
+      provider.fetchPlayersByName(search);
 }

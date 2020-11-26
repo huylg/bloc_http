@@ -10,23 +10,23 @@ class PlayerApiProvider {
 
   final successCode = 200;
 
-  Future<List<Players>> fetchPlayersByCountry(String countryId) async {
+  Future<List<Player>> fetchPlayersByCountry(String countryId) async {
     final response = await http.get(baseUrl + "country=" + countryId);
 
     return parseResponse(response);
   }
 
-  Future<List<Players>> fetchPlayersByName(String name) async {
+  Future<List<Player>> fetchPlayersByName(String name) async {
     final response = await http.get(baseUrl + "namne=" + name);
 
     return parseResponse(response);
   }
 
-  List<Players> parseResponse(http.Response response) {
+  List<Player> parseResponse(http.Response response) {
     final responseString = jsonDecode(response.body);
 
     if (response.statusCode == 200) {
-      return ResponseResult.fromJson(responseString).items;
+      return ApiResult.fromJson(responseString).items;
     }
 
     throw Exception('fail when load players');
